@@ -4,9 +4,10 @@ version = "1.0.0"
 description = "Local journal that archives facts a Grok Bot would otherwise lose."
 readme = "README.md"
 requires-python = ">=3.11"
-license = "MIT"
+license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 authors = [{ name = "Pedro Martins" }]
+classifiers = ["License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)"]
 dependencies = ["mcp==2.3.0"]
 
 [project.optional-dependencies]

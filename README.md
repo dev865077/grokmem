@@ -46,4 +46,6 @@ python3 -m pytest -q
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+Copyright (C) 2026 Pedro Martins.
+
+GPL-3.0-or-later. See [LICENSE](LICENSE).

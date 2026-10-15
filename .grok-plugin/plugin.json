@@ -6,13 +6,23 @@
   "author": {
     "name": "Pedro Martins"
   },
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "logo": "assets/logo.svg",
   "homepage": "https://github.com/dev865077/grokmem",
   "repository": "https://github.com/dev865077/grokmem",
-  "keywords": ["grokmem", "grokmem memory", "journal", "local memory"],
+  "keywords": [
+    "grokmem",
+    "grokmem memory",
+    "journal",
+    "local memory"
+  ],
   "category": "productivity",
-  "tags": ["memory", "journal", "notes", "tasks"],
+  "tags": [
+    "memory",
+    "journal",
+    "notes",
+    "tasks"
+  ],
   "mcpServers": "./mcp.json",
   "skills": "./skills/"
 }
