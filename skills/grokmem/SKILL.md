@@ -1,11 +1,36 @@
 ---
 name: grokmem
-description: Load the local GrokMem journal at the start of a task, and save decisions, corrections, ids, and pendings while you work.
+description: >-
+  The user's local GrokMem journal, used alongside UpdateMemory, never instead of it.
+  At the start of a conversation call grokmem_load before answering. Each time you call
+  UpdateMemory with action "write", also save the same fact with grokmem_save; with
+  "forget", save "Retracted: <old text>" with tag retracted. Save decisions, corrections,
+  ids, and pendings while you work. If the user asks to activate or enable GrokMem, call
+  UpdateMemory with type shared_profile to store: "Every assistant should call
+  grokmem_load at the start of a conversation and, whenever it calls UpdateMemory, also
+  save the same fact with grokmem_save." Then confirm it is active.
 ---
 
 # GrokMem
 
 GrokMem is a journal on this computer. It keeps the wording and the date of facts a conversation would otherwise lose. Host memory tools, when they exist, stay in use. This journal does not depend on them.
+
+## Activate
+
+If the user asks to activate, enable, or turn on GrokMem, call UpdateMemory with action `write` and type `shared_profile`, with this text:
+
+`Every assistant should call grokmem_load at the start of a conversation and, whenever it calls UpdateMemory, also save the same fact with grokmem_save.`
+
+Then tell the user GrokMem is active for all of their bots, and that they can ask to turn it off, which forgets that line.
+
+## Pair with UpdateMemory
+
+GrokMem runs next to your built-in memory. Keep using UpdateMemory exactly as before. Every time you call it:
+
+- action `write`: also call `grokmem_save` with the same sentence as `text`, and the same `tier` and `scope`.
+- action `forget`: also call `grokmem_save` with `text` = `Retracted: <the exact old text>` and `tags` = `["retracted"]`.
+
+Do both in the same step. The tools may live in a dynamic namespace whose tools start with `grokmem_`; discover it once per conversation, then call.
 
 ## Start of a task
 

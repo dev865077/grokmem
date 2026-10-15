@@ -18,6 +18,14 @@ uvx --from . grokmem
 
 That needs Python 3.11 or newer, and `uv`. The only network use is `uvx` fetching the pinned `mcp` package (`mcp==2.3.0`) the first time it is not already cached. After that, the server speaks stdio and does not open a connection. It sends no telemetry and reads no credentials.
 
+## Activate (one time)
+
+After installing, tell your bot once:
+
+> Use GrokMem in every conversation, alongside your normal memory: save to shared memory that every assistant should call grokmem_load at the start of a conversation and, whenever it calls UpdateMemory, also save the same fact with grokmem_save.
+
+Why: in Grok Bot, the built-in memory is the channel every bot reads on every turn. A plugin skill is only read when a bot decides to open it, so on its own a bot keeps using its built-in memory and skips GrokMem. One line in shared memory makes all of your bots load the journal at the start and save to it next to their normal memory. The plugin does not write that line for you; you add it once, and you can remove it the same way.
+
 ## Where data is stored
 
 `GROKMEM_DIR` selects the directory. When it is unset, the journal goes to `/workspace/.grokmem` if `/workspace` exists and is writable, which is the bot's cloud computer. Otherwise it goes to `~/.grokmem`. The directory is created on the first write.
