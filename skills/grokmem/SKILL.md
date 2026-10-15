@@ -2,13 +2,13 @@
 name: grokmem
 description: >-
   The user's local GrokMem journal, used alongside UpdateMemory, never instead of it.
-  At the start of a conversation call grokmem_load before answering. Each time you call
-  UpdateMemory with action "write", also save the same fact with grokmem_save; with
-  "forget", save "Retracted: <old text>" with tag retracted. Save decisions, corrections,
-  ids, and pendings while you work. If the user asks to activate or enable GrokMem, call
-  UpdateMemory with type shared_profile to store: "Every assistant should call
-  grokmem_load at the start of a conversation and, whenever it calls UpdateMemory, also
-  save the same fact with grokmem_save." Then confirm it is active.
+  At the start of a conversation call grokmem_load before answering. Call grokmem_find
+  whenever you lack context about the user, their projects, past decisions, people, or
+  ids, before answering or asking the user. Each time you call UpdateMemory with action
+  "write", also save the same fact with grokmem_save; with "forget", save
+  "Retracted: <old text>" with tag retracted. Save decisions, corrections, ids, and
+  pendings while you work. If the user asks to activate or enable GrokMem, call
+  UpdateMemory with type shared_profile to store: "Every assistant should call grokmem_load at the start of a conversation, call grokmem_find whenever it lacks context about the user, their projects, past decisions, people, or ids (before answering or asking the user), and, whenever it calls UpdateMemory, also save the same fact with grokmem_save. GrokMem complements normal memory and never replaces it." Then confirm it is active.
 ---
 
 # GrokMem
@@ -19,7 +19,7 @@ GrokMem is a journal on this computer. It keeps the wording and the date of fact
 
 If the user asks to activate, enable, or turn on GrokMem, call UpdateMemory with action `write` and type `shared_profile`, with this text:
 
-`Every assistant should call grokmem_load at the start of a conversation and, whenever it calls UpdateMemory, also save the same fact with grokmem_save.`
+`Every assistant should call grokmem_load at the start of a conversation, call grokmem_find whenever it lacks context about the user, their projects, past decisions, people, or ids (before answering or asking the user), and, whenever it calls UpdateMemory, also save the same fact with grokmem_save. GrokMem complements normal memory and never replaces it.`
 
 Then tell the user GrokMem is active for all of their bots, and that they can ask to turn it off, which forgets that line.
 

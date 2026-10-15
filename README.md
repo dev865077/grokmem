@@ -22,9 +22,9 @@ That needs Python 3.11 or newer, and `uv`. The only network use is `uvx` fetchin
 
 After installing, tell your bot once:
 
-> Use GrokMem in every conversation, alongside your normal memory: save to shared memory that every assistant should call grokmem_load at the start of a conversation and, whenever it calls UpdateMemory, also save the same fact with grokmem_save.
+> Use GrokMem in every conversation, alongside your normal memory: save to shared memory that every assistant should call grokmem_load at the start of a conversation, call grokmem_find whenever it lacks context about the user, their projects, past decisions, people, or ids (before answering or asking the user), and, whenever it calls UpdateMemory, also save the same fact with grokmem_save. GrokMem complements normal memory and never replaces it.
 
-Why: in Grok Bot, the built-in memory is the channel every bot reads on every turn. A plugin skill is only read when a bot decides to open it, so on its own a bot keeps using its built-in memory and skips GrokMem. One line in shared memory makes all of your bots load the journal at the start and save to it next to their normal memory. The plugin does not write that line for you; you add it once, and you can remove it the same way.
+Why: in Grok Bot, the built-in memory is the channel every bot reads on every turn. A plugin skill is only read when a bot decides to open it, so on its own a bot keeps using its built-in memory and skips GrokMem. One line in shared memory makes all of your bots load the journal at the start, search it when they lack context, and save to it next to their normal memory. The plugin does not write that line for you; you add it once, and you can remove it the same way.
 
 ## Where data is stored
 
